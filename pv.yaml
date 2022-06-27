@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-persistent-storage-lab
+  labels:
+    type: local
+  namespace: labwordpress
+spec:
+  #storageClassName: manual
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  claimRef:
+    namespace: labwordpress
+    name: pvc-mysql
+  hostPath:
+    path: /home/mysql-persistent-storage-lab
+    #type: DirectoryOrCreate
